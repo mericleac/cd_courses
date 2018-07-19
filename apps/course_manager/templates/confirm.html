@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>Confirm Delete</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .container {
+            margin: 40px auto;
+        }
+        a, input {
+            margin: 0px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure you want to delete the following course?</h2>
+        <div class="row">
+            <p class="col-sm-2">Name:</p>
+            <p class="col-sm-8">{{ course.name }}</p>
+        </div>
+        <div class="row">
+            <p class="col-sm-2">Description:</p>
+            <p class="col-sm-8">{{ course.description }}</p>
+        </div>
+        <div class="row">
+            <form action="../destroy/{{ course.id }}">
+                {% csrf_token %}
+                <a href="/courses" class="btn btn-secondary col-sm-2">No</a>
+                <input class="btn btn-danger col-sm-8" type="submit" value="Yes! I want to delete this">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
